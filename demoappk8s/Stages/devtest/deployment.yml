@@ -1,0 +1,21 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: demofrontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demofrontend
+  template:
+    metadata:
+      labels:
+        app: demofrontend
+    spec:
+      containers:
+      - name: frontend
+        image: demodevacr.azurecr.io/frontend
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+      - name: regcred    
